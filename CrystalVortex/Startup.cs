@@ -10,7 +10,6 @@ namespace CrystalVortex
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            Roles.CreateRole("Test");
         }
     }
 }
