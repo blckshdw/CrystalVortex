@@ -29,10 +29,16 @@ namespace CrystalVortex.Models
 
     public class Release
     {
+        [Key]
         public int Id { get; set; }
+        [Index(IsUnique = true)]
+        [MaxLength(6)]
+        [Required]
         public string ReleaseCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:d}")]
         public DateTime ReleaseDate { get; set; }
         public byte[] AlbumArt { get; set; }
         private List<Track> _tracks = new List<Track>();

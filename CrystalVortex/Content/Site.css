@@ -1,12 +1,22 @@
-﻿body {
+﻿html, body {
+background-color:#fff;
+}
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*
+    background: url("https://wallpaperscraft.com/image/space_art_spiral_star_glow_94003_1920x1080.jpg");
+    background-repeat: no-repeat;
+    */
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+
+
+    background: rgba(255, 255, 255, 1.00);
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

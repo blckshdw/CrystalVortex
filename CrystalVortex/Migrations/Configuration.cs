@@ -5,16 +5,16 @@ namespace CrystalVortex.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CrystalVortex.Models.ReleaseModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<CrystalVortex.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "CrystalVortex.Models.ReleaseModel";
+            ContextKey = "CrystalVortex.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(CrystalVortex.Models.ReleaseModel context)
+        protected override void Seed(CrystalVortex.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
