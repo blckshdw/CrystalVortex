@@ -54,9 +54,9 @@ namespace CrystalVortex
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "532128873601324",
+               appSecret: "b2b412cc295cb4534c97a19750e6c4e4");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

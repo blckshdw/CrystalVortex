@@ -26,6 +26,10 @@ namespace CrystalVortex
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/facebook").Include(
+                "~/Scripts/facebook.js"));
+
         }
     }
 }
