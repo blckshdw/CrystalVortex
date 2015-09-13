@@ -20,7 +20,7 @@ namespace CrystalVortex.Controllers
         {
             return View(await db.Releases.OrderByDescending(e => e.ReleaseDate).ToListAsync());
         }
-
+        
         [Route("Releases/{ReleaseCode}")]
         public async Task<ActionResult> Details(string ReleaseCode)
         {
