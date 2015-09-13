@@ -22,6 +22,7 @@ namespace CrystalVortex.Controllers
         }
         
         [Route("Releases/{ReleaseCode}")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> Details(string ReleaseCode)
         {
             Release release = await db.Releases.Include(r => r.Tracks).FirstOrDefaultAsync(r => r.ReleaseCode == ReleaseCode);

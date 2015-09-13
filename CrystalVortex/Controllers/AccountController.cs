@@ -153,10 +153,14 @@ namespace CrystalVortex.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                UserManager.AddToRole(user.Id, "<Role>");
+                var result = await UserManager.CreateAsync(user, model.Password);                
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "User");
+                    if (user.Email == "danhaas@gmail.com" || user.Email == "u4ic@crystalvortex.ca")
+                        UserManager.AddToRole(user.Id,"Admin");
+
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -401,6 +405,10 @@ namespace CrystalVortex.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        UserManager.AddToRole(user.Id, "User");
+                        if (user.Email == "danhaas@gmail.com" || user.Email == "u4ic@crystalvortex.ca")
+                            UserManager.AddToRole(user.Id, "Admin");
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
