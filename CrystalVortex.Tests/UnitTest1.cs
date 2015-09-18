@@ -3,12 +3,22 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Diagnostics;
 using System.Data.Entity.Migrations;
+using CrystalVortex.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CrystalVortex.Tests
 {
     [TestClass]
     public class ReleasesUnitTest
     {
+        [TestMethod]
+        public void DropDatabase()
+        {
+            using (var db = new CrystalVortex.Models.ReleaseModel())
+            {
+                db.Database.Delete();
+            }
+        }
         [TestMethod]
         public void CreateDatabase()
         {
@@ -18,6 +28,21 @@ namespace CrystalVortex.Tests
             }
 
         }
+
+        [TestMethod]
+        public void Application_AddRole()
+        {
+            using (var db = new CrystalVortex.Models.ApplicationDbContext())
+            {
+                foreach (var rolename in new string[] { "User", "Admin" })
+                {
+                    var role = new IdentityRole(rolename);
+                    db.Roles.AddOrUpdate(role);
+                }
+                db.SaveChanges();
+            }
+        }
+
         [TestMethod]
         public void InsertReleases()
         {
@@ -36,7 +61,7 @@ namespace CrystalVortex.Tests
             using (var db = new Models.ReleaseModel())
             {
                 var query = from r in db.Releases
-                            orderby r.Id
+                            orderby r.ReleaseCode
                             select r;
 
                 foreach (var item in query)
@@ -52,7 +77,7 @@ namespace CrystalVortex.Tests
         {
             using (var db = new CrystalVortex.Models.ReleaseModel())
             {
-                var release = new Models.Release { Id=2, Name = "Test "+DateTime.Now.Ticks, Description = "Unit Test", ReleaseDate = DateTime.Now.Date };
+                var release = new Models.Release { Name = "Test "+DateTime.Now.Ticks, Description = "Unit Test", ReleaseDate = DateTime.Now.Date };
                 for (int i = 1; i < 10; i++)
                 {
 
@@ -63,19 +88,29 @@ namespace CrystalVortex.Tests
                 db.SaveChanges();
             }
         }
-
         [TestMethod]
-        public void LoadReleases()
+        public void ClearTables()
         {
             using (var db = new CrystalVortex.Models.ReleaseModel())
             {
                 db.Database.ExecuteSqlCommand("TRUNCATE TABLE Tracks");
                 db.Database.ExecuteSqlCommand("DELETE FROM Releases");
                 db.Database.ExecuteSqlCommand("DBCC CHECKIDENT (Releases, RESEED, 0)");
-
+            }
+        }
+        [TestMethod]
+        public void LoadReleases()
+        {
+            using (var db = new CrystalVortex.Models.ReleaseModel())
+            {
+                
+                db.Database.ExecuteSqlCommand("TRUNCATE TABLE Tracks");
+                db.Database.ExecuteSqlCommand("DELETE FROM Releases");
+                //db.Database.ExecuteSqlCommand("DBCC CHECKIDENT (Releases, RESEED, 0)");
+                
                 db.Releases.Add(new Models.Release
                 {
-                    Id = 1,
+                    //Id = 1,
                     ReleaseCode = "CVR001",
                     Description = "Corporate Government",
                     ReleaseDate = new DateTime(2013, 2, 12),
@@ -91,7 +126,7 @@ namespace CrystalVortex.Tests
 
                 db.Releases.Add(new Models.Release
                 {
-                    Id = 2,
+                    //Id = 2,
                     ReleaseCode = "CVR002",
                     Description = "locus somnorum ep",
                     ReleaseDate = new DateTime(2013, 5, 26),
@@ -107,7 +142,7 @@ namespace CrystalVortex.Tests
 
                 db.Releases.Add(new Models.Release
                 {
-                    Id = 3,
+                    //Id = 3,
                     ReleaseCode = "CVR003",
                     Description = "uh oh",
                     ReleaseDate = new DateTime(2013, 9, 3),
@@ -123,8 +158,8 @@ namespace CrystalVortex.Tests
 
                 db.Releases.Add(new Models.Release
                 {
-                    Id = 4,
-                    ReleaseCode = "CVR003",
+                    //Id = 4,
+                    ReleaseCode = "CVR004",
                     Description = "Transit",
                     ReleaseDate = new DateTime(2014, 3, 1),
                     Name = "H445",
@@ -139,7 +174,7 @@ namespace CrystalVortex.Tests
 
                 db.Releases.Add(new Models.Release
                 {
-                    Id = 5,
+                    //Id = 5,
                     ReleaseCode = "CVR005",
                     Description = "camcussion & ace prime selector",
                     ReleaseDate = new DateTime(2015, 7, 4),

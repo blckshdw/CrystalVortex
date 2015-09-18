@@ -34,17 +34,20 @@ namespace CrystalVortex.Models
         [Index(IsUnique = true)]
         [MaxLength(6)]
         [Required]
+        [Display(Name="Release Code")]
         public string ReleaseCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:d}")]
+        [Display(Name="Date of Release")]
         public DateTime ReleaseDate { get; set; }
         public byte[] AlbumArt { get; set; }
         private List<Track> _tracks = new List<Track>();
         public List<Track> Tracks { get { return _tracks; } set { _tracks = value; } }
         public string TorrentURL { get; set; }
         public string TorrentMD5 { get; set; }
+        public bool IsActive { get; set; }
     }
 
     public class Track

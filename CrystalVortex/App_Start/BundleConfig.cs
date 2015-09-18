@@ -26,10 +26,22 @@ namespace CrystalVortex
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-social.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-custom.css",
+                      "~/Scripts/dropzone/basic.css",
+                      "~/Scripts/dropzone/dropzone.css",
+                      "~/Content/fonts/tillium/stylesheet.css",
+                      "~/Content/fonts/ptsans/stylesheet.css",
+                      "~/Content/fonts/opensans_bold_macroman/stylesheet.css",
+                      "~/Content/fonts/opensans_regular_macroman/stylesheet.css",
+                       "~/Content/site.css"                     
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/facebook").Include(
                 "~/Scripts/facebook.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
+                "~/Scripts/dropzone/dropzone.js"));
+
 
         }
     }
