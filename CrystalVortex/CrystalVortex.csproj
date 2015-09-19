@@ -390,17 +390,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\ContactSubmitted.cshtml" />
-    <Content Include="Views\Releases\Create.cshtml" />
-    <Content Include="Views\Releases\Delete.cshtml" />
-    <Content Include="Views\Releases\Details.cshtml" />
-    <Content Include="Views\Releases\Edit.cshtml" />
-    <Content Include="Views\Releases\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\opensans_bold_macroman\" />
     <Folder Include="Content\fonts\opensans_regular_macroman\" />
+    <Folder Include="Views\Releases\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
