@@ -48,6 +48,7 @@ namespace CrystalVortex.Models
         public string TorrentURL { get; set; }
         public string TorrentMD5 { get; set; }
         public bool IsActive { get; set; }
+        
     }
 
     public class Track

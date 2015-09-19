@@ -33,6 +33,7 @@ namespace CrystalVortex
                       "~/Content/fonts/ptsans/stylesheet.css",
                       "~/Content/fonts/opensans_bold_macroman/stylesheet.css",
                       "~/Content/fonts/opensans_regular_macroman/stylesheet.css",
+                      "~/Content/jplayer.css",
                        "~/Content/site.css"                     
                       ));
 
@@ -42,6 +43,10 @@ namespace CrystalVortex
             bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
                 "~/Scripts/dropzone/dropzone.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jplayer").Include(
+                "~/Scripts/jquery-jplayer/jquery.jplayer.js",
+                "~/Scripts/jquery-jplayer/ttw-music-player.js"));
+            
 
         }
     }

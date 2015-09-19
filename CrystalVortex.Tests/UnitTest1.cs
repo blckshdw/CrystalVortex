@@ -176,9 +176,9 @@ namespace CrystalVortex.Tests
                 {
                     //Id = 5,
                     ReleaseCode = "CVR005",
-                    Description = "camcussion & ace prime selector",
+                    Description = "Come Fly With Us",
                     ReleaseDate = new DateTime(2015, 7, 4),
-                    Name = "Come Fly With Us",
+                    Name = "camcussion & ace prime selector",
                     TorrentMD5 = "6950d9cb87b62c28c965e660ca955871",
                     TorrentURL = "http://ia801502.us.archive.org/26/items/CVR005/CVR005_archive.torrent",
                     Tracks = new System.Collections.Generic.List<Models.Track>

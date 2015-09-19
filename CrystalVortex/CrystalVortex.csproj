@@ -245,6 +245,7 @@
     <Content Include="Content\fonts\tillium\titillium-light-webfont.svg" />
     <Content Include="Content\fonts\tillium\titillium-regular-webfont.svg" />
     <Content Include="Content\fonts\tillium\titillium-semibold-webfont.svg" />
+    <Content Include="Content\jplayer.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -295,15 +296,37 @@
     <Content Include="Content\fonts\ptsans\ptc75f-webfont.ttf" />
     <Content Include="Content\fonts\ptsans\ptc75f-webfont.woff" />
     <Content Include="Content\fonts\ptsans\ptc75f-webfont.woff2" />
-    <None Include="Properties\PublishProfiles\blckshdw-test - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\blckshdw-test - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Web01.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\album-cover-bg.jpg" />
+    <Content Include="Images\album-cover-highlight.png" />
     <Content Include="Images\AlbumArt\CVR001-Artwork.gif" />
     <Content Include="Images\AlbumArt\CVR002-Artwork.gif" />
     <Content Include="Images\AlbumArt\CVR003-Artwork.gif" />
     <Content Include="Images\AlbumArt\CVR004-Artwork.gif" />
     <Content Include="Images\AlbumArt\CVR005-Artwork.gif" />
+    <Content Include="Images\buy-bg.png" />
+    <Content Include="Images\description-more.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\player-bg.png" />
+    <Content Include="Images\player-elapsed.png" />
+    <Content Include="Images\player-next-hover.png" />
+    <Content Include="Images\player-next.png" />
+    <Content Include="Images\player-pause-hover.png" />
+    <Content Include="Images\player-pause.png" />
+    <Content Include="Images\player-play-hover.png" />
+    <Content Include="Images\player-play.png" />
+    <Content Include="Images\player-previous-hover.png" />
+    <Content Include="Images\player-previous.png" />
+    <Content Include="Images\player-progress.png" />
+    <Content Include="Images\rating-bar-on.png" />
+    <Content Include="Images\rating-bar.png" />
+    <Content Include="Images\rating-off.png" />
+    <Content Include="Images\rating-on.png" />
+    <Content Include="Images\tracklist-bg.png" />
+    <Content Include="Images\tracklist-item-bg.png" />
+    <Content Include="Images\tracklist-more.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dropzone\basic.css" />
@@ -318,6 +341,9 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-jplayer\jquery.jplayer.js" />
+    <Content Include="Scripts\jquery-jplayer\ttw-music-player-min.js" />
+    <Content Include="Scripts\jquery-jplayer\ttw-music-player.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -327,7 +353,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\soundcloud.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
