@@ -1,0 +1,249 @@
+﻿@model CrystalVortex.Models.Release
+@using CrystalVortex.Helpers;
+@{
+    ViewBag.Title = "Details";
+}
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jplayer")
+    <script>
+        $(document).ready(function () {
+            /*
+            $('body').ttwMusicPlayer({
+                mp3: 'mix/1.mp3',
+                oga: 'mix/1.ogg',
+                rating: 4.5,
+                title: 'Some song title',
+                buy: 'http://www.codebasehero.com',
+                price: '0.99',
+                duration: '4:28',
+                artist: 'Artist Name',
+                cover: 'images/cover.jpg'
+            }, {
+                currencySymbol: '$',
+                buyText: 'BUY',
+                tracksToShow: 5,
+                autoPlay: false,
+                ratingCallback: function (index, playlistItem, rating) {
+                    //some logic to process the rating, perhaps through an ajax call
+                }
+            });
+            */
+        });
+    </script>
+
+
+<script>
+$(document).ready(function(){
+
+	new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1"
+	}, [
+		{
+			title:"Cro Magnon Man",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
+		},
+		{
+			title:"Your Face",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-05-Your_face.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg"
+		},
+		{
+			title:"Cyber Sonnet",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-07-Cybersonnet.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-07-Cybersonnet.ogg"
+		},
+		{
+			title:"Tempered Song",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg"
+		},
+		{
+			title:"Hidden",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg"
+		},
+		{
+			title:"Lentement",
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg"
+		},
+		{
+			title:"Lismore",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-04-Lismore.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg"
+		},
+		{
+			title:"The Separation",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-05-The-separation.ogg"
+		},
+		{
+			title:"Beside Me",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-06-Beside-me.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-06-Beside-me.ogg"
+		},
+		{
+			title:"Bubble",
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+		},
+		{
+			title:"Stirring of a Fool",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-08-Stirring-of-a-fool.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-08-Stirring-of-a-fool.ogg"
+		},
+		{
+			title:"Partir",
+			free: true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
+		},
+		{
+			title:"Thin Ice",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-10-Thin-ice.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-10-Thin-ice.ogg"
+		}
+	], {
+		swfPath: "../dist/jplayer",
+		supplied: "oga, mp3",
+		wmode: "window",
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+
+	$("#jplayer_inspector_1").jPlayerInspector({jPlayer:$("#jquery_jplayer_1")});
+});
+    </script>
+}
+
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+<h2>@Html.DisplayFor(Model => Model.ReleaseCode): @Html.DisplayFor(Model => Model.Name)</h2>
+<hr />
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            <!--
+                <img class="img-responsive thumbnail" src="@Url.Content(String.Format("~/Images/AlbumArt/{0}-Artwork.gif", Model.ReleaseCode))" />
+            -->
+            @Html.DisplayReleaseImage(Model.ReleaseCode)
+
+        </div>
+        <div class="col-md-4">
+            <h3>Tracks</h3>
+            <ol>
+                @foreach (var item in Model.Tracks.OrderBy(t => t.TrackNumber))
+                {
+                    <li>
+                        <a class=''><i class="fa fa-play-circle"></i></a>
+                        <span class="tracknum">@Html.DisplayFor(modelItem => item.TrackNumber)</span>
+                        <span class="trackname">@Html.DisplayFor(modelItem => item.Name)</span>
+                        <span class="tracklength">[@Html.DisplayFor(modelItem => item.Length)]</span>
+                    </li>
+                }
+            </ol>
+            <hr />
+            <div class="fb-like"
+                 data-layout="button_count"
+                 data-action="like"
+                 data-show-faces="true"
+                 data-share="true">
+            </div>
+            <br />
+            <br />
+            <!--
+            <div class="row" style="margin-bottom:4px;">
+                <div class="btn-group">
+                    <a class='btn btn-primary disabled'><i class="fa fa-facebook"></i></a>
+                    <a class='btn btn-primary ' href='' style="width:12em"> Like <i class="fa fa-thumbs-o-up fa-fw"></i></a>
+                </div>
+            </div>
+            -->
+            <div class="row" style="margin-bottom:4px;">
+                <div class="btn-group">
+                    <a class="btn btn-success disabled"><i class="fa fa-magnet"></i></a>
+                    <a class="btn btn-success" href="@Html.DisplayFor(model => model.TorrentURL)" style="width:12em"> Download Torrent</a>
+                </div><br />
+                <span class="small">MD5: @Html.DisplayFor(model => model.TorrentMD5)</span>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+            .col-md-4
+        </div>
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumArt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumArt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TorrentURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TorrentURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TorrentMD5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TorrentMD5)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

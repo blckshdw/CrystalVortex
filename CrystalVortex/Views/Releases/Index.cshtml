@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CrystalVortex.Models.Release>
+@using CrystalVortex.Helpers;
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    .thumbnail {
+        background-color: #333;
+    }
+
+    .release {
+        margin-bottom: 20px;
+    }
+
+    .releasecode {
+        float: left;
+        padding: 4px;
+        font: 11px Consolas;
+        font-weight: bold;
+        color: #C3B985;
+    }
+
+    .releasedate {
+        float: right;
+        padding: 4px;
+        font: 11px Consolas;
+        font-weight: bold;
+        color: #BBB080;
+    }
+
+    .release .thumbnail {
+        margin-bottom: 3px;
+    }
+
+    .releasetitle {
+        text-align: center;
+        font-weight: bold;
+        background-color:#fff;
+        box-shadow: 0px 0px 2px 0px rgba(0,0,0,.4);
+        text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+    }
+
+    .releasedesc {
+        text-align: center;
+        color: #adadad;
+        font-style: italic;
+        font-size: 12px;
+    }
+
+    .albumart {
+        border-radius: 3px;
+        border: 1px inset #3A3A3A;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Crystal Vortex Releases</h1>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="release col-lg-3 col-md-4 col-xs-6 thumb ">
+                <div class="releasecode">@Html.DisplayFor(modelItem => item.ReleaseCode)</div>
+                <div class="releasedate">@Html.DisplayFor(modelItem => item.ReleaseDate)</div>
+                <a class="thumbnail" href='@Url.Action("Details", "Releases", new { ReleaseCode = item.ReleaseCode })'>
+                    <!--
+                        <img class="img-responsive albumart" src="@Url.Content(String.Format("~/Images/AlbumArt/{0}-Artwork.gif",item.ReleaseCode))" />
+                    
+                    -->
+                    <!--<img class="img-responsive" src="http://placehold.it/400x300" alt="">-->
+                    @Html.DisplayReleaseImage(item.ReleaseCode)
+                </a>
+                <div class="releasetitle">@Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="releasedesc">@Html.DisplayFor(modelItem => item.Description)</div>
+            </div>
+        }
+    </div>
+</div>
+
+

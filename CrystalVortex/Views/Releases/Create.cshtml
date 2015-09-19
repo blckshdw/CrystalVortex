@@ -1,0 +1,44 @@
+﻿@model CrystalVortex.Models.Release
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Create New Relase</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <span class="text-danger">
+                @if (ViewData.ModelState["NonUniqueReleaseCode"] != null && ViewData.ModelState["NonUniqueReleaseCode"].Errors.Count > 0)
+                {
+                    @ViewData.ModelState["NonUniqueReleaseCode"].Errors[0].ErrorMessage
+                }
+            </span>
+        }
+        <br/>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReleaseCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReleaseCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReleaseCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Continue" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
